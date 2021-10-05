@@ -1,7 +1,7 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 
-const dotEnv = require("dotenv").config({ path: "./config/.env" });
+require("dotenv").config({ path: "./config/.env" });
 
 const SECRET_KEY = process.env.SECRET_KEY;
 
@@ -13,9 +13,28 @@ app.get("/api", (req, res) => {
   });
 });
 
-app.post("/api/posts", (req, res) => {
-  res.json({
-    message: "Post Created...",
+const verifyToken = (req, res, next) => {
+  const bearerHeader = req.headers["authorization"];
+
+  if (typeof bearerHeader !== "undefined") {
+    const bearer = bearerHeader.split(" ");
+    const bearerToken = bearer[1];
+    req.token = bearerToken;
+  } else {
+    res.sendStatus(403);
+  }
+};
+
+app.post("/api/posts", verifyToken, (req, res) => {
+  jwt.verify(req.token, SECRET_KEY, (err, authData) => {
+    if (err) {
+      req.sendStatus(403);
+    } else {
+      res.json({
+        message: "Post Created...",
+        authData
+      });
+    }
   });
 });
 
