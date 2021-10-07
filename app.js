@@ -1,9 +1,10 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 
-require("dotenv").config({ path: "./config/.env" });
+const indexRoutes = require("./routes/index");
+const userRoutes = require("./routes/user");
 
-const SECRET_KEY = process.env.SECRET_KEY;
+require("dotenv").config({ path: "./config/.env" });
 
 const app = express();
 
@@ -11,10 +12,9 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", "views");
 
-app.get("/", (req, res) => {
-  res.render("index", {
-    pageTitle: "Home",
-  });
-});
+// Routes
+app.use(indexRoutes);
+app.use("/", indexRoutes);
+app.use("/users", userRoutes);
 
 app.listen(5000, () => console.log(`server run at port ${process.env.PORT}`));
