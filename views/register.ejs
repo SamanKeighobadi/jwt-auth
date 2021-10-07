@@ -3,12 +3,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/register.css">
+    <link rel="stylesheet" href="/css/users.css">
     <link rel="stylesheet" href="/css/styles.css">
     <title><%= pageTitle %> </title>
 </head>
 <body>
     <%- include('./includes/Nav.ejs') %> 
-    <h1>Register Page</h1>
+    <div class="container">
+        <form action="">
+            <h1>Rgister</h1>
+            <lable for="email">
+                Email :
+            </lable>
+            <input name="email" autocomplete="off" type="email" placeholder="example@gmail.com" >
+
+            <label for="password">Password :</label>
+            <input type="password" name="password" autocomplete="off" placeholder="*******">
+            <button type="submit">Register</button>
+        </form>
+    </div>
 </body>
 </html>
