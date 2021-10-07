@@ -5,10 +5,14 @@ const jwt = require("jsonwebtoken");
 
 const indexRoutes = require("./routes/index");
 const userRoutes = require("./routes/user");
+const Database = require("./utils/dadtabase");
 
 require("dotenv").config({ path: "./config/.env" });
 
 const app = express();
+
+// Connect to database
+Database()
 
 app.use(express.static(path.join(__dirname, "public")));
 
