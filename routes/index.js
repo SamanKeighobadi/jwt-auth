@@ -10,11 +10,10 @@ router.get("/", (req, res) => {
 });
 
 router.get("/products", (req, res) => {
-//   res.render("products", {
-//     pageTitle: "products",
-//     path: "products",
-//   });
-res.send('<h1>Products </h1>')
+  res.render("products", {
+    pageTitle: "products",
+    path: "products",
+  });
 });
 
 module.exports = router;

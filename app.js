@@ -1,3 +1,5 @@
+const path = require("path");
+
 const express = require("express");
 const jwt = require("jsonwebtoken");
 
@@ -7,6 +9,8 @@ const userRoutes = require("./routes/user");
 require("dotenv").config({ path: "./config/.env" });
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, "public")));
 
 // Template Engine
 app.set("view engine", "ejs");
