@@ -2,16 +2,18 @@ const { Router } = require("express");
 
 const router = new Router();
 
-router.get("/login", (req, res) => {
-  res.render("login", {
-    pageTitle: "Login User",
-  });
-});
+// @desc Login Page
+// @route  GET  /login
+router.get("/login", (req, res) => {});
 
-router.get("/register", (req, res) => {
-  res.render("register", {
-    pageTitle: "Register user",
-  });
-});
+// @desc Login Page
+// @route  POST  /login
+router.post("/login", (req, res) => {});
+
+// @desc Register Page
+// @route  POST  /register
+router.get("/register", (req, res) => {});
+
+router.post("/register", (req, res) => {});
 
 module.exports = router;

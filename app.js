@@ -11,10 +11,14 @@ require("dotenv").config({ path: "./config/.env" });
 
 const app = express();
 
+// middlwares
+app.use(express.urlencoded({extended:false}))
+
 // Connect to database
 Database()
-
+// set Statcis
 app.use(express.static(path.join(__dirname, "public")));
+
 
 // Template Engine
 app.set("view engine", "ejs");
