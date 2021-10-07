@@ -9,3 +9,11 @@ exports.register = (req, res) => {
     pageTitle: "Register user",
   });
 };
+
+exports.createUser = (req,res) => {
+    res.send('user created')
+}
+
+exports.loginUser = (req,res) => {
+    res.send('user has successfully login')
+}

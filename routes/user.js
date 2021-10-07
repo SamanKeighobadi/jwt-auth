@@ -2,18 +2,22 @@ const { Router } = require("express");
 
 const router = new Router();
 
+const userController = require("../controllers/userController");
+
 // @desc Login Page
 // @route  GET  /login
-router.get("/login", (req, res) => {});
+router.get("/login", userController.login);
 
-// @desc Login Page
+// @desc Handle login user
 // @route  POST  /login
-router.post("/login", (req, res) => {});
+router.post("/login", userController.loginUser);
 
 // @desc Register Page
-// @route  POST  /register
-router.get("/register", (req, res) => {});
+// @route  GET  /register
+router.get("/register", userController.register);
 
-router.post("/register", (req, res) => {});
+// @dest Create new user
+// @route POST /register
+router.post("/register", userController.createUser);
 
 module.exports = router;
