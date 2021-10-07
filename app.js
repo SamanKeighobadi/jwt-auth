@@ -7,18 +7,14 @@ const SECRET_KEY = process.env.SECRET_KEY;
 
 const app = express();
 
-app.get("/api", (req, res) => {
-  res.json({
-    message: "Hello Postman",
+// Template Engine
+app.set("view engine", "ejs");
+app.set("views", "views");
+
+app.get("/", (req, res) => {
+  res.render("index", {
+    pageTitle: "Home",
   });
-});
-
-
-
-
-app.post("/api/login", (req, res) => {
- 
-
 });
 
 app.listen(5000, () => console.log(`server run at port ${process.env.PORT}`));
