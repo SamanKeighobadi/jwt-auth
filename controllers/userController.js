@@ -1,3 +1,5 @@
+const User = require('../models/User');
+
 exports.login = (req, res) => {
   res.render("login", {
     pageTitle: "Login User",
@@ -10,10 +12,14 @@ exports.register = (req, res) => {
   });
 };
 
-exports.createUser = (req,res) => {
-    res.send('user created')
-}
+exports.createUser = (req, res) => {
+  res.json({
+    message: "user create...",
+  });
+};
 
-exports.loginUser = (req,res) => {
-    res.send('user has successfully login')
-}
+exports.loginUser = (req, res) => {
+  res.json({
+    message: "user Login...",
+  });
+};
