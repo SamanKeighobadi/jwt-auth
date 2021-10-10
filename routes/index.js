@@ -2,6 +2,8 @@ const { Router } = require("express");
 
 const router = new Router();
 
+// @desc Home Page
+// @route GET /
 router.get("/", (req, res) => {
   res.render("index", {
     pageTitle: "Home",
@@ -9,6 +11,8 @@ router.get("/", (req, res) => {
   });
 });
 
+// @desc Products page
+// @routes GET /products
 router.get("/products", (req, res) => {
   res.render("products", {
     pageTitle: "products",
