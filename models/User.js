@@ -1,17 +1,19 @@
 const mongoose = require("mongoose");
-const userValidation  = require('../config/validations/userValidation');
+const {isEmail} =require('validator');
 
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
     trim: true,
     unique: true,
-    required: true,
+    required: [true,'this field is required'],
+    lowercase:true,
+    validate:[isEmail,'Please enter a valid email']
   },
   password: {
     type: String,
     trim: true,
-    required: true,
+    required: [true,'this field is required'],
   },
   createAt: {
     type: Date,
@@ -19,9 +21,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-// userSchema.statics.userValidation = fucntion(body) {
-//   return userValidation.validate(body,{abortEarly:false})
-// }
+
 
 const User = mongoose.model("User", userSchema);
 

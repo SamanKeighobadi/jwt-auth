@@ -1,5 +1,4 @@
 const User = require("../models/User");
-const validation = require('../config/validations/userValidation')
 
 // @dect render login page view
 exports.login = (req, res) => {
@@ -18,6 +17,7 @@ exports.register = (req, res) => {
 // @desc handle create user and redirect user to login page
 exports.createUser = async (req, res) => {
   try {
+ 
     const { email, password } = req.body;
 
     const user = await User.create({ email, password });
@@ -28,7 +28,7 @@ exports.createUser = async (req, res) => {
     });
   } catch (ex) {
     console.log(ex);
-    res.status(400).send("error user not created");
+    // res.status(400).send("error user not created");
     res.render("register", {
       pageTitle: "Register page",
       path: "/register",
