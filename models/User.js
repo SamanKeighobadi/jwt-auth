@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const userValidation  = require('../config/validations/userValidation');
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -17,6 +18,10 @@ const userSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
+
+// userSchema.statics.userValidation = fucntion(body) {
+//   return userValidation.validate(body,{abortEarly:false})
+// }
 
 const User = mongoose.model("User", userSchema);
 
